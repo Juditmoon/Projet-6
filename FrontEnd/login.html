@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
+        rel="stylesheet">
+    <meta name="description" content="">
+    <link rel="stylesheet" href="./assets/login.css">
+    <script type="module" src="/FrontEnd/assets/js/login.js"></script>
+    <script type="module" src="/FrontEnd/assets/js/modal.js"></script>
+</head>
+
+<body>
+    <div class="">
+        
+    </div>
+    <header>
+        <h1>Sophie Bluel <span>ARCHITECTE D'INTÉRIEUR</span></h1>
+        <nav>
+            <ul>
+                <li>projets</li>
+                <li>contact</li>
+                <li class="li-login">login</li>
+                <li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="contact">
+            <h2>Log in</h2>
+            <form class="formulaire-login" action="https://localhost:5678/api/users/login" method="post">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email">
+                <label for="mdp">Mot de passe</label>
+                <input type="password" name="password" id="password">
+                <span class="error-message" id="error"></span> <!--message d'erreur -->
+                <input type="submit" value="Se connecter">
+            </form>
+        </section>
+        <div>
+            <button class="mdp-oublie">Mot de passe oublié</button>
+        </div>
+    </main>
+    <footer>
+        <nav>
+            <ul class="ML">
+                <li>Mentions Légales</li>
+            </ul>
+        </nav>
+    </footer>
+</body>
+
+</html>
