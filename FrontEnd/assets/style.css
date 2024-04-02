@@ -82,18 +82,9 @@ header {
 }
 #icon-modal {
 	color: black;
-	margin-left: -1px;
+	margin-left: 20px;
 }
-.fenetre-modale {
-	display: inline-block;
-	width: 300px;
-	margin-left: 10px;
-	margin-bottom: 100px;
-	margin-top: 50px;
-}
-.p-fenetreModale {
-	display: inline-block;
-}
+
 section {
 	margin: 50px 0
 }
@@ -140,6 +131,16 @@ nav li {
 }
 
 li:hover {
+	color: #B1663C;
+}
+
+.login {
+	text-decoration: none;
+	color: black;
+	background-color: white;
+	border: none;
+}
+.login:hover {
 	color: #B1663C;
 }
 #introduction {

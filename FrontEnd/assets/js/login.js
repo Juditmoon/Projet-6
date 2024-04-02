@@ -37,7 +37,7 @@ try {
     localStorage.setItem('token', token);
    
    
-    window.location.href = 'modal.html';
+    window.location.href = 'edition-mode.html';
   } else {
 
     messageError.textContent = "Erreur dans le mot de passe ou dans l'identifiant";

@@ -9,7 +9,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
-	<script type="module" src="/FrontEnd/assets/js/works.js"></script>
+	<link rel="stylesheet" href="./assets/modal.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer">
@@ -25,7 +25,7 @@
 		<ul>
 			<li>projets</li>
 			<li>contact</li>
-			<li>logout</li>
+			<li><a class="login" href="login.html">logout</li></a>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -44,14 +44,32 @@
 	</section>
 	<section id="portfolio">
 		<h2 class="h2-modal">Mes Projets</h2>
-        <div class="fenetre-modale">
-            <i class="fa-regular fa-pen-to-square" id="icon-modal"></i>
-            <p class="p-fenetreModale">modifier</p>
-        </div>
+		<i class="fa-regular fa-pen-to-square" id="icon-modal"></i>
+		<!-- Trigger/Open the modal -->
+		<button id="myBtn">modifier</button>
+		<!-- The modal -->
+		<div id="myModal" class="modal">
+			<!-- Model Content -->
+			<div class="modal-content">
+				<div class="modal-header">
+					<span class="close">&times;</span>
+					<p class="p-modal">Galerie photo</p>
+				</div>
+				<div class="modal-body galerie-modal">
+
+				</div>
+				<hr class="hr">
+				<div class="modal-footer">
+					<button class="button-modal">Ajouter une photo</button>
+				</div>
+			</div>
+		</div>
+       
 		<div class="galerie">
 			<!-- Gestion dynamique de récupération des travaux via API-->
 		</div>
 	</section>
+
 	<section id="contact">
 		<h2>Contact</h2>
 		<p>Vous avez un projet ? Discutons-en !</p>
@@ -74,5 +92,7 @@
 		</ul>
 	</nav>
 </footer>
+<script type="module" src="/FrontEnd/assets/js/works.js"></script>
+<script type="module" src="/FrontEnd/assets/js/modal.js"></script>
 </body>
 </html>
