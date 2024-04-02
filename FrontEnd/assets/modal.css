@@ -35,7 +35,7 @@
 
 .hr {
     width: 420px;
-    margin-top: 470px;
+    margin-top: 200px;
 }
 
 .close {
@@ -67,6 +67,16 @@
 
 .row {
     display: flex;
+    flex-wrap: wrap;
+    margin: 30px;
+}
+
+.fa-trash-can{
+    cursor: pointer;
+    margin-top: -100px;
+    position: absolute;
+    margin-left: 55px;
+    color: white;
+    background-color: black;
     padding: 5px;
-    justify-content: space-around;
 }
