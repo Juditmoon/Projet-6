@@ -14,7 +14,7 @@
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
-<body>
+<body class="body-background body">
     <div class="header-mode-edition">
         <i class="fa-regular fa-pen-to-square"></i>
         <p class="p-modeEdition">Mode édition</p>
@@ -52,7 +52,7 @@
 			<!-- Model Content -->
 			<div class="modal-content">
 				<div class="modal-header">
-					<span class="close">&times;</span>
+					<span class="close fa-2x">&times;</span>
 					<p class="p-modal">Galerie photo</p>
 				</div>
 				<div class="modal-body galerie-modal">
@@ -61,6 +61,42 @@
 				<hr class="hr">
 				<div class="modal-footer">
 					<button class="button-modal">Ajouter une photo</button>
+				</div>
+			</div>
+		</div>
+		<!-- Modal ajout photo -->
+		<div id="modalAjout" class="modal2">
+			<!-- Model Content -->
+			<div class="modal-content">
+				<div class="modal-header">
+					<span class="close2 fa-2x">&times;</span>
+					<span class="fa-solid fa-arrow-left"></span>
+				</div>
+				<p class="p-modal2">Ajout photo</p>
+				<div class="blue-background">
+					<i class="fa-solid fa-image fa-5x"></i>
+					<!-- tengo que cambiatr el button por input type="files"? -->
+					<!-- <button type="file" class="ajouterPhoto">+ Ajouter photo</button> -->
+					<!-- <label class="" for="file">+ Ajouter photo</label>
+					<input type="file" class="ajouterPhoto " multiple> -->
+					<input type="file" name="file" id="file" class="inputfile" />
+                    <label for="file">Choose a file</label>
+					<p class="pModal2">jpg, png : 4mo max</p>
+				</div>
+				<form class="form">
+					<label class="p-form">Titre</label>
+					<input class="input-titre" type="text">
+					<label class="p-formCategorie">Catégorie</label>
+					<select class="input-categorie arrow">
+						<option class="lol"> </option>
+						<option>Objets</option>
+						<option>Appartements</option>
+						<option>Hôtels & Restaurants</option>
+					</select>
+				</form>
+				<hr class="hr2">
+				<div class="modal-footer">
+					<button class="button-modal2">Valider</button>
 				</div>
 			</div>
 		</div>
@@ -92,7 +128,7 @@
 		</ul>
 	</nav>
 </footer>
-<script type="module" src="/FrontEnd/assets/js/works.js"></script>
+
 <script type="module" src="/FrontEnd/assets/js/modal.js"></script>
 </body>
 </html>
