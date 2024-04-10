@@ -132,7 +132,7 @@
 
 .p-modal2 {
     margin-top: 70px;
-    margin-left: 220px;
+    margin-left: 240px;
     font-size: 26px;
 }
 
@@ -153,12 +153,15 @@
 
 .ajouterPhoto {
     cursor: pointer;
-    margin-top: 14px;
-    margin-left: 123px;
+    margin-top: 10px;
+    margin-left: 120px;
     border-radius: 50px;
     border: none;
-    width: 173px;
-    height: 36px;
+    display: inline-block;
+    width: 143px;
+    height: 25px;
+    padding-left: 40px;
+    padding-top: 12px;
     color: #306685;
     background-color: #CBD6DC;
 }
@@ -225,6 +228,7 @@
     color: #6C6C6C;
     border-right: 16px solid transparent
 }
+
 
 .body-background {
     background-color: pink;
