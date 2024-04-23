@@ -6,31 +6,29 @@ const projets = await reponse.json()
 
 function genererProjets(projets) {
 
-    for (let i = 0; i < projets.length; i++) {
+  for (let i = 0; i < projets.length; i++) {
 
-        const article = projets[i];
-        //sélection de la div qui va contenir les travaux  
-        const sectionGalerie = document.querySelector(".galerie");
-        //on crée les éléments
-        const articleElement = document.createElement("article");
-        const imageElement = document.createElement("img");
-        const titreElement = document.createElement("p");
-         // On récupère les données importantes pour afficher les travaux
-        imageElement.src = article.imageUrl;
-        imageElement.setAttribute('categorie', article.categoryId);
-        titreElement.innerText = article.title;
+    const article = projets[i];
+    //sélection de la div qui va contenir les travaux  
+    const sectionGalerie = document.querySelector(".galerie");
+    //on crée les éléments
+    const articleElement = document.createElement("article");
+    const imageElement = document.createElement("img");
+    const titreElement = document.createElement("p");
+    // On récupère les données importantes pour afficher les travaux
+    imageElement.src = article.imageUrl;
+    imageElement.setAttribute('categorie', article.categoryId);
+    titreElement.innerText = article.title;
 
-        // On relie les éléments img et title à leur parent card et l'article à la div qui contient la galerie 
-        sectionGalerie.appendChild(articleElement);
-        articleElement.appendChild(imageElement);
-        articleElement.appendChild(titreElement);
+    // On relie les éléments img et title à leur parent card et l'article à la div qui contient la galerie 
+    sectionGalerie.appendChild(articleElement);
+    articleElement.appendChild(imageElement);
+    articleElement.appendChild(titreElement);
 
-    }
+  }
 
 }
-
 genererProjets(projets);
-
 
 
 //Récupération des données des travaux 
@@ -38,43 +36,41 @@ const reponseModal = await fetch('http://localhost:5678/api/works');
 const projetsModal = await reponseModal.json()
 
 function genererProjetsModal(projetsModal) {
-    for (let i = 0; i < projetsModal.length; i++) {
+  for (let i = 0; i < projetsModal.length; i++) {
 
-        const article = projetsModal[i];
-        //sélection de la div qui va contenir les travaux  
-        const sectionGalerie = document.querySelector(".galerie-modal");
-        //on crée les éléments
-        const articleElement = document.createElement("article");
-        const imageElement = document.createElement("img");
-        const titreElement = document.createElement("p");
-        const iconElement = document.createElement("i");
+    const article = projetsModal[i];
+    //sélection de la div qui va contenir les travaux  
+    const sectionGalerie = document.querySelector(".galerie-modal");
+    //on crée les éléments
+    const articleElement = document.createElement("article");
+    const imageElement = document.createElement("img");
+    const titreElement = document.createElement("p");
+    const iconElement = document.createElement("i");
 
-         // On récupère les données importantes pour afficher les travaux
-        imageElement.src = article.imageUrl;
-        imageElement.setAttribute('categorie', article.categoryId);
-        imageElement.classList.add('image-size')
-        iconElement.classList.add("fa-trash-can")
-        iconElement.addEventListener("click", (event) => {
-          
-          event.preventDefault();
-           
-            deleteWork(article.id, event);
-          
-        });
-        iconElement.classList.add("fa-solid")
-        iconElement.setAttribute("id", "work.id");
-        sectionGalerie.classList.add('row')
+    // On récupère les données importantes pour afficher les travaux
+    imageElement.src = article.imageUrl;
+    imageElement.setAttribute('categorie', article.categoryId);
+    imageElement.classList.add('image-size')
+    iconElement.classList.add("fa-trash-can")
+    iconElement.addEventListener("click", (event) => {
 
-        // On relie les éléments img et title à leur parent card et l'article à la div qui contient la galerie 
-        sectionGalerie.appendChild(articleElement);
-        articleElement.appendChild(imageElement);
-        articleElement.appendChild(titreElement);
-        articleElement.appendChild(iconElement);
+      event.preventDefault();
 
-    }
+      deleteWork(article.id, event);
 
+    });
+    iconElement.classList.add("fa-solid")
+    iconElement.setAttribute("id", "work.id");
+    sectionGalerie.classList.add('row')
+
+    // On relie les éléments img et title à leur parent card et l'article à la div qui contient la galerie 
+    sectionGalerie.appendChild(articleElement);
+    articleElement.appendChild(imageElement);
+    articleElement.appendChild(titreElement);
+    articleElement.appendChild(iconElement);
+
+  }
 }
-
 genererProjetsModal(projetsModal);
 
 
@@ -88,27 +84,28 @@ const btn = document.getElementById('myBtn')
 const span = document.querySelector('.close')
 
 // // when the user clicks the button, open the modal
-btn.onclick = function() {
-    modal.style.display = "block"
+btn.onclick = function () {
+  modal.style.display = "block"
 }
 
 // when the user clicks on <span>, close the modal 
-span.onclick = function(){
-    modal.style.display = "none"
+span.onclick = function () {
+  modal.style.display = "none"
 }
 
 // when the user clicks anywhere outside of the modal, close it 
-window.addEventListener("click",  function(event){
-    if (event.target == modal) {
-        modal.style.display = "none"
-    } }
+window.addEventListener("click", function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none"
+  }
+}
 )
 
 const token = localStorage.getItem('token');
 
 
 async function deleteWork(workId, event) {
-  
+
   const response = await fetch(`http://localhost:5678/api/works/${workId}`, {
     method: "DELETE",
     headers: {
@@ -116,24 +113,13 @@ async function deleteWork(workId, event) {
       Authorization: `Bearer ${token}`,
     },
   });
-  try {
-    if (response.ok) {
-      const figmodal = document.getElementById('workId').parentNode.parentNode.removeChild;
-      event.preventDefault()
-    //   figmodal.style.display = "none";
-
-      console.log(figmodal)
-    }
-  } catch (error) {
-    console.log(error);
-  }
 }
 
 // Modal-2
 
 //on fait apparaître la modal2
 const buttonAjouter = document.querySelector('.button-modal')
-buttonAjouter.addEventListener('click', function(){
+buttonAjouter.addEventListener('click', function () {
   const bodyBackground = document.querySelector('.body')
   bodyBackground.classList.add("body")
   const modal1 = document.getElementById('myModal')
@@ -145,71 +131,231 @@ buttonAjouter.addEventListener('click', function(){
 
 //gére le click sur la flèche
 const arrow = document.querySelector(".fa-arrow-left")
-arrow.addEventListener("click", function(){
+arrow.addEventListener("click", function () {
   const modal1 = document.getElementById('myModal')
   modal1.style.display = "block"
   const modal2 = document.getElementById('modalAjout')
   modal2.style.display = "none"
 })
 
-
 //gére le click sur la croix
 const closeIt = document.querySelector(".close2")
-closeIt.addEventListener("click", function(){
+closeIt.addEventListener("click", function () {
   const modal1 = document.getElementById('myModal')
   modal1.style.display = "none"
   const modal2 = document.getElementById('modalAjout')
   modal2.style.display = "none"
-}) 
+})
 
 //fermer la modale onclick dehors de la modal
-const modal2 = document.getElementById('modalAjout')
-modal2.addEventListener('click', function(event){
-  console.log(event.target)
-  if(event.target == modal2) {
-    modal2.style.display = "none"
-  }
+function closeModal2() {
+  const modal2 = document.getElementById('modalAjout')
+  modal2.addEventListener('click', function (event) {
+    // console.log(event.target)
+    if (event.target == modal2) {
+      modal2.style.display = "none"
+    }
+  })
+
+}
+closeModal2()
+
+//click ajouter photo, direction mon PC
+const fileInput = document.querySelector('input')
+fileInput.addEventListener('change', () => {
+  const preview = document.getElementById('preview')
+
+  const fr = new FileReader()
+  fr.readAsDataURL(fileInput.files[0])
+  fr.addEventListener('load', () => {
+    preview.urlContent = fr.result
+    // console.log(preview.urlContent)
+
+    const img = new Image()
+    img.setAttribute("id", "previewImage")
+    img.src = preview.urlContent
+    preview.appendChild(img)
+    img.classList.add('addImg')
+    const label = document.getElementById('label')
+    label.style.display = "none"
+    const pModal2 = document.querySelector('.pModal2')
+    pModal2.style.display = "none"
+  })
 })
 
 
-//click ajouter photo, direction mon PC
-// const ajouterPhoto = document.querySelector(".ajouterPhoto")
-// ajouterPhoto.addEventListener('change', (event) => {
-//   const fileList = event.target.files 
-// })
+function getTitreValue() {
+  var titreValue = document.getElementById('titre').value;
+  console.log('The value of "itre" input is: ' + titreValue);
+}
+let inputTitre = document.getElementById('titre');
+inputTitre.addEventListener('input', getTitreValue);
+// // function that changes the submit button of the formulaire to green when all the inputs have been filled
+function changeButtonColor() {
+  var fieldInput = document.getElementById('file').value;
+  console.log(fieldInput)
+  var titreInput = document.getElementById('titre').value;
+  var optionValue = document.getElementById('list').value;
 
-// var inputs = document.querySelectorAll( '.inputfile' );
-// Array.prototype.forEach.call( inputs, function( input )
-// {
-// 	var label	 = input.nextElementSibling,
-// 		labelVal = label.innerHTML;
+  var validerButton = document.getElementById('validerButton');
 
-// 	input.addEventListener( 'change', function( e )
-// 	{
-// 		var fileName = '';
-// 		if( this.files && this.files.length > 1 )
-// 			fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
-// 		else
-// 			fileName = e.target.value.split( '\' ).pop()
+  if (fieldInput !== '' && titreInput !== '' && optionValue !== 'emptyOption') {
+      validerButton.style.backgroundColor = '#1D6154';
+  } else {
+      validerButton.style.backgroundColor = '#A7A7A7';
+  }
+}
 
-// 		if( fileName )
-// 			label.querySelector( 'span' ).innerHTML = fileName;
-// 		else
-// 			label.innerHTML = labelVal;
-// 	});
+let fieldInput = document.getElementById('file');
+fieldInput.addEventListener('input', changeButtonColor);
+document.getElementById('titre').addEventListener('input', changeButtonColor);
+document.getElementById('list').addEventListener('change', changeButtonColor);
+
+let validerButton = document.getElementById('validerButton');
+validerButton.addEventListener('click', function(){
+ 
+  var fieldInput = document.getElementById('file').value;
+  console.log(fieldInput)
+  var titreInput = document.getElementById('titre').value;
+  var optionValue = document.getElementById('list').value;
+  var validerButton = document.getElementById('validerButton');
+
+  if (fieldInput !== '' && titreInput !== '' && optionValue !== 'emptyOption') {
+      validerButton.style.backgroundColor = '#1D6154';
+  } else {
+      alert('Veuillez remplir tous les champs')  
+  }
+});
+
+let alertTriggered = false;
+
+function stopFormSubmission(event) {
+    if (alertTriggered) {
+        event.preventDefault(); // Prevent the form from submitting
+    }
+}
+
+// Example of how to trigger the alert
+function triggerAlert() {
+    // alert('Veuillez remplir tous les champs');
+    alertTriggered = true; // Set the flag to true when the alert is triggered
+}
+
+// Add an event listener to the form submit event
+document.getElementById('form').addEventListener('submit', stopFormSubmission);
+
+
+function stopModalClose(event) {
+  if (alertTriggered) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+}
+
+// Example of how to trigger the alert and prevent modal close
+function triggerAlertAndPreventModalClose() {
+  alertTriggered = true;
+}
+document.getElementById('modalAjout').addEventListener('hide.bs.modal', stopModalClose);
+document.getElementById('validerButton').addEventListener('click', () => {
+  triggerAlertAndPreventModalClose, addWork});
+
+
+
+// // INDEX : 5-/ GESTION AJOUT D'UN PROJET        ///
+// ////////////////////////////////////////////////////
+
+const btnAjouterProjet = document.querySelector("#validerButton");
+btnAjouterProjet.addEventListener("click", addWork);
+
+// // Ajouter un projet
+function addWork() {
+  const titre = document.querySelector("#titre").value;
+  const categorie = document.querySelector("#list").value;
+  const file= document.querySelector('#file');
+    try {
+      const formData = new FormData();
+      formData.append('title', titre);
+      formData.append('category', categorie);
+      formData.append('image', file.files[0]);
+
+        const response = fetch("http://localhost:5678/api/works", {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+            body: formData,
+        });
+
+        if (response.status === 201) {
+            alert("Projet ajouté avec succès :)");
+            modaleProjets(dataAdmin);
+            backToModale();
+            generationProjets(data, null);
+            
+        }  else if (response.status === 500) {
+            alert("Erreur serveur");
+        } else if (response.status === 401) {
+            alert("Vous n'êtes pas autorisé à ajouter un projet");
+           
+    }}
+
+    catch (error) {
+        console.log(error);
+}}
+// addWork()
+
+
+
+
+
+
+// // After a successful file upload, save the file reference to localStorage
+// function saveFileReference(fieldInput) {
+//   // Ensure that a file has been uploaded
+//   if (fieldInput.files && fieldInput.files[0]) {
+//     // Create a URL for the uploaded file
+//     const imageUrl = URL.createObjectURL(fieldInput.files[0]);
+    
+//     // Retrieve the existing gallery array from localStorage, or create a new one if it doesn't exist
+//     const gallery = JSON.parse(localStorage.getItem('gallery')) || [];
+//     gallery.push(imageUrl);
+
+//     // Save the updated gallery array back to localStorage
+//     localStorage.setItem('gallery', JSON.stringify(gallery));
+//   }
+// }
+
+// // let fieldInput = document.getElementById('file');
+// // Call saveFileReference after a successful file upload, passing the file input element as an argument
+// fieldInput.addEventListener('change', function() {
+//   saveFileReference(this);
 // });
 
+// // Function to display the gallery images
+// function displayGallery() {
+//   const galleryContainer = document.querySelector('galerie');
+//   const gallery = JSON.parse(localStorage.getItem('gallery')) || [];
+
+//   // Clear the gallery container
+//   galleryContainer.innerHTML = '';
+
+//   // Create an img element for each file reference and append it to the container
+//   gallery.forEach(imageUrl => {
+//     const img = document.createElement('img');
+//     img.src = imageUrl;
+//     galleryContainer.appendChild(img);
+//   });
+// }
+
+// // Call displayGallery on page load to show the images
+// window.addEventListener('load', displayGallery);
 
 
 
 
 
 
- 
-
- 
-
-        
 
 
 
