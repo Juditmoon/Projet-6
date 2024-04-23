@@ -25,7 +25,7 @@
 		<ul>
 			<li>projets</li>
 			<li>contact</li>
-			<li><a class="login" href="login.html">logout</li></a>
+			<li><a class="login" href="login.html">logout</a></li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -33,7 +33,7 @@
 <main>
 	<section id="introduction">
 		<figure>
-			<img src="./assets/images/sophie-bluel.png" alt="">
+			<img src="./assets/images/sophie-bluel.png" alt="photo of sophie-bluel">
 		</figure>
 		<article>
 			<h2>Designer d'espace</h2>
@@ -73,27 +73,32 @@
 					<span class="fa-solid fa-arrow-left"></span>
 				</div>
 				<p class="p-modal2">Ajout photo</p>
-				<div class="blue-background">
-					<i class="fa-solid fa-image fa-5x"></i>
-					<input type="file" name="file" id="file" class="inputfile" data-multiple-caption="{count}"/>
-                    <label for="file" class="ajouterPhoto">+ Ajouter photo</label>
-					<p class="pModal2">jpg, png : 4mo max</p>
-				</div>
-				<form class="form">
+				<div id="error"></div>
+				<form class="form" id="form">
+					<div class="blue-background">
+						<div class="imgContainer">
+						<i class="fa-solid fa-image fa-5x"></i>
+						<input type="file" id="file" name="file" accept="image/*" class="inputfile"/>
+						<div id="preview"></div>
+						<label id="label" for="file" class="ajouterPhoto">+ Ajouter photo</label>
+						<p class="pModal2">jpg, png : 4mo max</p>
+					</div>
+					</div>
 					<label class="p-form">Titre</label>
-					<input class="input-titre" type="text">
+					<input class="input-titre" type="text" id="titre">
 					<label class="p-formCategorie">Catégorie</label>
-					<select class="input-categorie arrow">
-						<option class="lol"> </option>
-						<option>Objets</option>
-						<option>Appartements</option>
-						<option>Hôtels & Restaurants</option>
+					<select class="input-categorie arrow" id="list">
+						<option value="emptyOption" disabled selected></option>
+						<option value="objets">Objets</option>
+						<option value="appartements">Appartements</option>
+						<option value="hotels-restaurants">Hôtels & Restaurants</option>
 					</select>
+					<hr class="hr2">
+					<div class="modal-footer">
+						<button type="submit" id="validerButton" class="button-modal2">Valider</button>
+					</div>
 				</form>
-				<hr class="hr2">
-				<div class="modal-footer">
-					<button class="button-modal2">Valider</button>
-				</div>
+				
 			</div>
 		</div>
        
