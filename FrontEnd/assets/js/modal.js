@@ -1,36 +1,3 @@
-//Gestion des appel à l'API
-
-//Récupération des données des travaux 
-const reponse = await fetch('http://localhost:5678/api/works');
-const projets = await reponse.json()
-
-function genererProjets(projets) {
-
-  for (let i = 0; i < projets.length; i++) {
-
-    const article = projets[i];
-    //sélection de la div qui va contenir les travaux  
-    const sectionGalerie = document.querySelector(".galerie");
-    //on crée les éléments
-    const articleElement = document.createElement("article");
-    const imageElement = document.createElement("img");
-    const titreElement = document.createElement("p");
-    // On récupère les données importantes pour afficher les travaux
-    imageElement.src = article.imageUrl;
-    imageElement.setAttribute('categorie', article.categoryId);
-    titreElement.innerText = article.title;
-
-    // On relie les éléments img et title à leur parent card et l'article à la div qui contient la galerie 
-    sectionGalerie.appendChild(articleElement);
-    articleElement.appendChild(imageElement);
-    articleElement.appendChild(titreElement);
-
-  }
-
-}
-genererProjets(projets);
-
-
 //Récupération des données des travaux 
 const reponseModal = await fetch('http://localhost:5678/api/works');
 const projetsModal = await reponseModal.json()
@@ -143,12 +110,18 @@ arrow.addEventListener("click", function () {
 
 //gére le click sur la croix
 const closeIt = document.querySelector(".close2")
-closeIt.addEventListener("click", function () {
+closeIt.addEventListener("click", function (event) {
 
   const modal1 = document.getElementById('myModal')
   modal1.style.display = "none"
   const modal2 = document.getElementById('modalAjout')
   modal2.style.display = "none"
+  if (event.target == closeIt) {
+    form.reset()
+    previewImage.src = '';
+    
+  }
+
 })
 
 
