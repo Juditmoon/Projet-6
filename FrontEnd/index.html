@@ -10,10 +10,76 @@
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
 	<script type="module" src="/FrontEnd/assets/js/works.js"></script>
-
-
+	<script type="module" src="/FrontEnd/assets/js/userConnection.js"></script>
 </head>
 <body>
+	<section>
+	<div class="header-mode-edition">
+		<i class="fa-regular fa-pen-to-square"></i>
+		<p class="p-modeEdition">Mode édition</p>
+	</div>
+	<i class="fa-regular fa-pen-to-square" id="icon-modal"></i>
+			<!-- Trigger/Open the modal -->
+			<button id="myBtn">modifier</button>
+			<!-- The modal -->
+			<div id="myModal" class="modal">
+				<!-- Model Content -->
+				<div class="modal-content">
+					<div class="modal-header">
+						<span class="close fa-2x">&times;</span>
+						<p class="p-modal">Galerie photo</p>
+					</div>
+					<div class="modal-body galerie-modal">
+
+					</div>
+					<hr class="hr">
+					<div class="modal-footer">
+						<button class="button-modal">Ajouter une photo</button>
+					</div>
+				</div>
+			</div>
+			<!-- Modal ajout photo -->
+			<div id="modalAjout" class="modal2">
+				<!-- Model Content -->
+				<div class="modal-content">
+					<div class="modal-header">
+						<span class="close2 fa-2x">&times;</span>
+						<span class="fa-solid fa-arrow-left"></span>
+					</div>
+					<p class="p-modal2">Ajout photo</p>
+					<div id="error"></div>
+					<form class="form" id="form">
+						<div class="blue-background">
+							<div class="imgContainer">
+								<i class="fa-solid fa-image fa-5x"></i>
+								<input type="file" id="file" name="file" accept="image/*" class="inputfile" />
+								<div id="preview"></div>
+								<label id="label" for="file" class="ajouterPhoto">+ Ajouter photo</label>
+								<p class="pModal2">jpg, png : 4mo max</p>
+							</div>
+						</div>
+						<label class="p-form">Titre</label>
+						<input class="input-titre" type="text" id="titre">
+						<label class="p-formCategorie">Catégorie</label>
+						<select class="input-categorie arrow" id="list">
+							<option value="emptyOption" disabled selected></option>
+							<option value="1">Objets</option>
+							<option value="2">Appartements</option>
+							<option value="3">Hôtels & Restaurants</option>
+						</select>
+						<hr class="hr2">
+						<div class="modal-footer">
+							<button type="submit" id="validerButton" class="button-modal2">Valider</button>
+						</div>
+					</form>
+
+				</div>
+			</div>
+
+			<div class="galerie">
+				<!-- Gestion dynamique de récupération des travaux via API-->
+			</div>
+		</section>
 <header>
 	<h1>Sophie Bluel <span>ARCHITECTE D'INTÉRIEUR</span></h1>
 	<nav>
@@ -72,5 +138,6 @@
 		</ul>
 	</nav>
 </footer>
+<script type="module" src="/FrontEnd/assets/js/modal.js"></script>
 </body>
 </html>
