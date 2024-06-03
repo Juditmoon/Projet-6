@@ -74,7 +74,6 @@ window.addEventListener("click", function (event) {
 const token = localStorage.getItem('token');
 
 async function deleteWork(workId) {
-
   const response = await fetch(`http://localhost:5678/api/works/${workId}`, {
     method: "DELETE",
     headers: {
@@ -267,6 +266,7 @@ async function addWork(event) {
     });
 
     if (response.status === 201) {
+
       alert("Projet ajouté avec succès :)");
     } else if (response.status === 500) {
       alert("Erreur serveur");
